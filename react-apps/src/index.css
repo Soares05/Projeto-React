@@ -1,0 +1,64 @@
+/* Reset de estilos para o corpo da página */
+body {
+    
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para o elemento com o ID "root" */
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilos para a div principal do aplicativo */
+  .App {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para os botões */
+  button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para a lista de produtos e carrinho */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para o carrinho de compras */
+  #cart {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  /* Estilos para o total do carrinho */
+  #cart-total {
+    font-weight: bold;
+  }
+  
