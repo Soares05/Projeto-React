@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+//Definindo o estado inicial dos produtos e do carrinho
   const [products] = useState([
+    //Lista de produtos
     { id: 1, name: "Quadro", price: 30.00, image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTbLD3PAaOMwKJgAog7r3hyG6i-OquexYMwHqN9y4oRZHFvmfCLVahQnmtZhrX98Fa6gsKsYz6CivsK9Hn9FYUGp7fJ3Y2dL7CMhbiaF-XkWl9hK15_1yZL0g&usqp=CAE", description: "Qadro Terror 3D" },
     { id: 2, name: "Descartaveis", price: 20.00, image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRiVUmcCSb9kpsiGNs5t0wAsR5EdBQ5qvjc2lT_14ub1k7q-yo1NRjJjh5h0no9pFjVOAvE1tWmc7qnP4dNOJKH7uTOhftu1O7M7ZpZhEI&usqp=CAE", description: "Conjunto de Descartaveis" },
     { id: 3, name: "Painel", price: 25.00, image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRaABETyTCcZhNRoGIAtBRQIuS60nQa7FYRsgA5aWSiswiRzwHlY83c_2CuZrFXsT21IyOWhHAXbflBIx0y7B2MB3Nw9xiIPxIW8QhT_Xit4Q9SqeskP-iB&usqp=CAE", description: "Painel Janela com snague" },
@@ -30,11 +32,14 @@ function App() {
   ]);
 
   const [cart, setCart] = useState([]);
+  // Estado para armazenar os itens no carrinho
 
+  // Função para adicionar um produto ao carrinho
   const addToCart = (product) => {
     setCart((prevCart) => {
       const productInCart = prevCart.find((item) => item.id === product.id);
       if (productInCart) {
+         // Se o produto já estiver no carrinho, aumente a quantidade
         const updatedCart = prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -42,15 +47,17 @@ function App() {
         );
         return updatedCart;
       } else {
+        // Se o produto não estiver no carrinho, adicione-o com quantidade 1
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
   };
-
+    // Função para remover um produto do carrinho
   const removeFromCart = (product) => {
     setCart((prevCart) => {
       const productInCart = prevCart.find((item) => item.id === product.id);
       if (productInCart && productInCart.quantity > 1) {
+        // Se houver mais de um do mesmo produto no carrinho, diminua a quantidade
         const updatedCart = prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity - 1 }
@@ -58,11 +65,12 @@ function App() {
         );
         return updatedCart;
       } else {
+        // Se houver apenas um do mesmo produto no carrinho, remova-o
         return prevCart.filter((item) => item.id !== product.id);
       }
     });
   };
-
+   // Função para calcular o total do carrinho
   const calculateTotal = () => {
     return cart.reduce(
       (total, product) => total + product.price * product.quantity,
@@ -74,15 +82,18 @@ function App() {
     <div className='background'>
 
       <div className="App">
-        <h1>Carrinho de Compras</h1>
+        <h1>CARRINHO DE COMPRAS</h1>
+        <br></br>
         <h2>Produtos Disponíveis</h2>
         <div className="product-cards-container">
+          {/* Mapeando e exibindo a lista de produtos */}
           {products.map((product) => (
             <div key={product.id} className="product-card">
               <img src={product.image} alt={product.name} />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>Preço: ${product.price.toFixed(2)}</p>
+               {/* Botão para adicionar um produto ao carrinho */}
               <button onClick={() => addToCart(product)}>Adicionar</button>
             </div>
           ))}
@@ -92,11 +103,14 @@ function App() {
         <aside id="cart">
           <header>
             <h2>Seu Carrinho</h2>
+            <img src="https://o.remove.bg/downloads/cbf85af6-b76a-44b9-8a5b-89bfda50d3c4/5a364b6d2c5557.7578312615135076931816-removebg-preview.png" width="30px" height="30px"></img>
           </header>
           <ul>
+            {/* Mapeando e exibindo os itens do carrinho */}
             {cart.map((product) => (
               <li key={product.id}>
                 {product.name} - ${product.price.toFixed(2)} x{product.quantity}{' '}
+                {/* Botão para remover um produto do carrinho */}
                 <button onClick={() => removeFromCart(product)}>Remover</button>
               </li>
             ))}

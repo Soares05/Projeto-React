@@ -14,22 +14,27 @@
 
 .App>h1,
 .App>h2 {
-  color: #f9f9f9;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #050404;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 /* Estilos para o cabeçalho */
 header {
   text-align: center;
+  display: flex;
+  flex-direction: row;
   padding: 20px;
+  background-size: cover;
+  margin-right: 10px;
 }
 
 header h2 {
-  color: #000000;
+  color: #050404;
 }
 
 /* Estilos para a container de cards */
 .product-cards-container {
+  color: #ffffff;
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -41,7 +46,7 @@ header h2 {
 /* Estilos para os cards de produtos */
 .product-card {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #5d0494;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -79,7 +84,7 @@ header h2 {
 /* Estilos para o carrinho de compras */
 #cart {
 
-  background-color: #fff;
+  background-color: #888888;
   color: black;
   padding: 20px;
   border-radius: 5px;
